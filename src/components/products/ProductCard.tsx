@@ -43,13 +43,13 @@ export function ProductCard({ product, onAddToCart, onViewDetails }: ProductCard
 
   return (
     <Card 
-      className="group cursor-pointer shadow-card hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+      className="group cursor-pointer shadow-card hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-1 overflow-hidden max-w-sm"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <CardHeader className="p-0 relative">
         {/* Product Image */}
-        <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-secondary to-accent">
+        <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-secondary to-accent h-48">
           <img
             src={product.image}
             alt={product.name}
@@ -116,7 +116,7 @@ export function ProductCard({ product, onAddToCart, onViewDetails }: ProductCard
         </div>
       </CardHeader>
 
-      <CardContent className="p-4 space-y-3">
+      <CardContent className="p-3 space-y-2">
         {/* Category */}
         <div className="flex items-center justify-between">
           <Badge variant="outline" className="text-xs">
@@ -129,49 +129,45 @@ export function ProductCard({ product, onAddToCart, onViewDetails }: ProductCard
         </div>
 
         {/* Title */}
-        <h3 className="font-semibold text-lg leading-tight line-clamp-2 group-hover:text-primary transition-colors">
+        <h3 className="font-semibold text-sm leading-tight line-clamp-1 group-hover:text-primary transition-colors">
           {product.name}
         </h3>
-
-        {/* Description */}
-        <p className="text-sm text-muted-foreground line-clamp-2">
-          {product.description}
-        </p>
 
         {/* Rating */}
         <div className="flex items-center space-x-2">
           <div className="flex items-center space-x-1">
-            <Star className="h-4 w-4 fill-warning text-warning" />
-            <span className="text-sm font-medium">{product.rating}</span>
+            <Star className="h-3 w-3 fill-warning text-warning" />
+            <span className="text-xs font-medium">{product.rating}</span>
           </div>
           <span className="text-xs text-muted-foreground">
-            ({product.reviews} avaliações)
+            ({product.reviews})
           </span>
         </div>
 
         {/* Price */}
         <div className="flex items-baseline space-x-2">
-          <span className="text-2xl font-bold text-primary">
+          <span className="text-lg font-bold text-primary">
             {product.price.toFixed(2)} MT
           </span>
           {product.originalPrice && (
-            <span className="text-sm text-muted-foreground line-through">
+            <span className="text-xs text-muted-foreground line-through">
               {product.originalPrice.toFixed(2)} MT
             </span>
           )}
         </div>
       </CardContent>
 
-      <CardFooter className="p-4 pt-0">
+      <CardFooter className="p-3 pt-0">
         <Button 
-          className="w-full gradient-primary text-primary-foreground font-medium group-hover:shadow-glow transition-all"
+          size="sm"
+          className="w-full gradient-primary text-primary-foreground font-medium group-hover:shadow-glow transition-all text-xs"
           onClick={(e) => {
             e.stopPropagation();
             onAddToCart(product);
           }}
         >
-          <ShoppingCart className="h-4 w-4 mr-2" />
-          Adicionar ao Carrinho
+          <ShoppingCart className="h-3 w-3 mr-1" />
+          Adicionar
         </Button>
       </CardFooter>
     </Card>

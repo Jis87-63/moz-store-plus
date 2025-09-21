@@ -39,7 +39,7 @@ const mockProducts: Product[] = [
   },
   {
     id: "2", 
-    name: "Free Fire 💎 12000",
+    name: "Free Fire Diamantes",
     description: "12.000 diamantes para Free Fire - entrega instantânea",
     price: 250.00,
     originalPrice: 300.00,
@@ -193,7 +193,7 @@ export function ProductsSection({ onAddToCart }: ProductsSectionProps) {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mb-12">
           {sortedProducts.map((product) => (
             <ProductCard
               key={product.id}

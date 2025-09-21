@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 
 interface HeaderProps {
   cartItems: number;
@@ -23,10 +24,10 @@ export function Header({ cartItems, isDarkMode, toggleDarkMode }: HeaderProps) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const navItems = [
-    { label: "Início", href: "#" },
-    { label: "Produtos", href: "#produtos" },
-    { label: "Suporte", href: "#suporte" },
-    { label: "Sobre", href: "#sobre" },
+    { label: "Início", href: "/" },
+    { label: "Produtos", href: "/#produtos" },
+    { label: "Suporte", href: "/support" },
+    { label: "Sobre", href: "/#sobre" },
   ];
 
   return (
@@ -34,24 +35,26 @@ export function Header({ cartItems, isDarkMode, toggleDarkMode }: HeaderProps) {
       <div className="container flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <div className="h-8 w-8 rounded-lg gradient-primary flex items-center justify-center">
+          <Link to="/" className="flex items-center space-x-2">
+            <div className="h-8 w-8 rounded-lg gradient-primary flex items-center justify-center">
             <span className="text-sm font-bold text-primary-foreground">MZ</span>
           </div>
-          <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-            MozStore.Virtual
-          </span>
+            <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+              MozStore.Virtual
+            </span>
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.label}
-              href={item.href}
+              to={item.href}
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -124,22 +127,26 @@ export function Header({ cartItems, isDarkMode, toggleDarkMode }: HeaderProps) {
                 </div>
                 
                 {navItems.map((item) => (
-                  <a
+                  <Link
                     key={item.label}
-                    href={item.href}
+                    to={item.href}
                     className="text-lg font-medium hover:text-primary transition-colors py-2"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
                 
                 <div className="pt-4 border-t space-y-3">
-                  <Button className="w-full gradient-primary text-primary-foreground font-medium">
-                    Fazer Login
-                  </Button>
-                  <Button variant="outline" className="w-full">
-                    Registrar
-                  </Button>
+                  <Link to="/login">
+                    <Button className="w-full gradient-primary text-primary-foreground font-medium">
+                      Fazer Login
+                    </Button>
+                  </Link>
+                  <Link to="/register">
+                    <Button variant="outline" className="w-full">
+                      Registrar
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </SheetContent>
